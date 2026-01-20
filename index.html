@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Noob Coin - The Happiest Coin in Crypto! 🪙</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Chewy&family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --gold: #FFD700;
+            --dark-gold: #FFA500;
+            --light-gold: #FFEB99;
+            --bg-dark: #1a1a2e;
+            --bg-darker: #0f0f1e;
+            --pink: #FF69B4;
+            --white: #ffffff;
+            --shadow: rgba(255, 215, 0, 0.3);
+            --green: #00ff88;
+        }
+
+        body {
+            font-family: 'Comic Neue', cursive;
+            background: var(--bg-dark);
+            color: var(--white);
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Animated background stars */
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .star {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: var(--gold);
+            border-radius: 50%;
+            animation: twinkle 3s infinite;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.2; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.5); }
+        }
+
+        /* Container */
+        .container {
+            position: relative;
+            z-index: 1;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Header */
+        header {
+            text-align: center;
+            padding: 60px 20px 40px;
+            animation: slideDown 0.8s ease-out;
+        }
+
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .logo {
+            width: 200px;
+            height: 200px;
+            margin: 0 auto 30px;
+            animation: bounce 2s infinite, rotate 20s linear infinite;
+            filter: drop-shadow(0 0 30px var(--shadow));
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        h1 {
+            font-family: 'Chewy', cursive;
+            font-size: 4.5rem;
+            color: var(--gold);
+            text-shadow: 
+                0 0 20px var(--shadow),
+                0 4px 0 var(--dark-gold),
+                0 8px 0 var(--bg-darker);
+            margin-bottom: 15px;
+            letter-spacing: 3px;
+            animation: glow 2s ease-in-out infinite;
+        }
+
+        @keyframes glow {
+            0%, 100% { text-shadow: 
+                0 0 20px var(--shadow),
+                0 4px 0 var(--dark-gold),
+                0 8px 0 var(--bg-darker);
+            }
+            50% { text-shadow: 
+                0 0 40px var(--gold),
+                0 4px 0 var(--dark-gold),
+                0 8px 0 var(--bg-darker);
+            }
+        }
+
+        .tagline {
+            font-size: 1.8rem;
+            color: var(--light-gold);
+            font-weight: 700;
+            margin-bottom: 30px;
+            animation: slideUp 0.8s ease-out 0.3s backwards;
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Main Content */
+        .hero-section {
+            background: linear-gradient(135deg, var(--dark-gold) 0%, var(--gold) 50%, var(--light-gold) 100%);
+            border-radius: 30px;
+            padding: 60px 40px;
+            text-align: center;
+            margin: 40px 0;
+            box-shadow: 
+                0 20px 60px rgba(255, 215, 0, 0.4),
+                inset 0 -10px 30px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+            animation: slideUp 0.8s ease-out 0.5s backwards;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: repeating-linear-gradient(
+                45deg,
+                transparent,
+                transparent 10px,
+                rgba(255, 255, 255, 0.1) 10px,
+                rgba(255, 255, 255, 0.1) 20px
+            );
+            animation: slide 20s linear infinite;
+        }
+
+        @keyframes slide {
+            from { transform: translate(0, 0); }
+            to { transform: translate(50px, 50px); }
+        }
+
+        .hero-section h2 {
+            font-family: 'Chewy', cursive;
+            font-size: 3rem;
+            color: var(--bg-darker);
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+            text-shadow: 2px 2px 0 rgba(255, 255, 255, 0.5);
+        }
+
+        .hero-section p {
+            font-size: 1.5rem;
+            color: var(--bg-dark);
+            font-weight: 700;
+            position: relative;
+            z-index: 1;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        /* Social Links */
+        .social-section {
+            margin: 60px 0;
+            animation: slideUp 0.8s ease-out 0.7s backwards;
+        }
+
+        .social-section h3 {
+            font-family: 'Chewy', cursive;
+            font-size: 2.5rem;
+            color: var(--gold);
+            text-align: center;
+            margin-bottom: 40px;
+            text-shadow: 0 0 10px var(--shadow);
+        }
+
+        .social-buttons {
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .social-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 15px;
+            padding: 20px 40px;
+            background: linear-gradient(135deg, var(--gold), var(--dark-gold));
+            color: var(--bg-darker);
+            text-decoration: none;
+            font-size: 1.4rem;
+            font-weight: 700;
+            border-radius: 50px;
+            box-shadow: 
+                0 10px 30px var(--shadow),
+                inset 0 -5px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .social-btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .social-btn:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .social-btn:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 
+                0 15px 40px var(--shadow),
+                inset 0 -5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .social-btn:active {
+            transform: translateY(-2px) scale(1.02);
+        }
+
+        .social-icon {
+            font-size: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .social-text {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Contract Address Section */
+        .ca-section {
+            background: linear-gradient(135deg, rgba(0, 255, 136, 0.15), rgba(255, 215, 0, 0.15));
+            border: 3px solid var(--green);
+            border-radius: 30px;
+            padding: 40px 30px;
+            margin: 60px 0;
+            text-align: center;
+            animation: slideUp 0.8s ease-out 0.85s backwards;
+            box-shadow: 0 0 40px rgba(0, 255, 136, 0.2);
+        }
+
+        .ca-section h3 {
+            font-family: 'Chewy', cursive;
+            font-size: 2.5rem;
+            color: var(--green);
+            margin-bottom: 25px;
+            text-shadow: 0 0 20px rgba(0, 255, 136, 0.5);
+        }
+
+        .ca-container {
+            background: var(--bg-darker);
+            border: 2px solid var(--green);
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px auto;
+            max-width: 100%;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .ca-text {
+            font-family: 'Courier New', monospace;
+            font-size: 1.1rem;
+            color: var(--green);
+            word-break: break-all;
+            flex: 1;
+            min-width: 200px;
+            text-align: center;
+            padding: 10px;
+        }
+
+        .copy-btn {
+            background: linear-gradient(135deg, var(--green), #00cc6f);
+            color: var(--bg-darker);
+            border: none;
+            padding: 12px 25px;
+            border-radius: 25px;
+            font-family: 'Comic Neue', cursive;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 255, 136, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .copy-btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.4s, height 0.4s;
+        }
+
+        .copy-btn:hover::before {
+            width: 200px;
+            height: 200px;
+        }
+
+        .copy-btn:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 8px 20px rgba(0, 255, 136, 0.4);
+        }
+
+        .copy-btn:active {
+            transform: translateY(-1px) scale(1.02);
+        }
+
+        .copy-btn span {
+            position: relative;
+            z-index: 1;
+        }
+
+        .copied-notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, var(--green), #00cc6f);
+            color: var(--bg-darker);
+            padding: 15px 30px;
+            border-radius: 15px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            box-shadow: 0 10px 30px rgba(0, 255, 136, 0.4);
+            opacity: 0;
+            transform: translateY(-20px);
+            transition: all 0.3s ease;
+            z-index: 1000;
+            pointer-events: none;
+        }
+
+        .copied-notification.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Fun Facts */
+        .fun-section {
+            background: rgba(255, 215, 0, 0.1);
+            border: 3px solid var(--gold);
+            border-radius: 30px;
+            padding: 50px 40px;
+            margin: 60px 0;
+            text-align: center;
+            animation: slideUp 0.8s ease-out 0.9s backwards;
+        }
+
+        .fun-section h3 {
+            font-family: 'Chewy', cursive;
+            font-size: 2.5rem;
+            color: var(--gold);
+            margin-bottom: 30px;
+        }
+
+        .fun-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .fun-card {
+            background: var(--bg-darker);
+            padding: 30px;
+            border-radius: 20px;
+            border: 2px solid var(--gold);
+            transition: all 0.3s ease;
+            animation: fadeIn 0.5s ease-out backwards;
+        }
+
+        .fun-card:nth-child(1) { animation-delay: 1s; }
+        .fun-card:nth-child(2) { animation-delay: 1.1s; }
+        .fun-card:nth-child(3) { animation-delay: 1.2s; }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.8); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .fun-card:hover {
+            transform: translateY(-10px) rotate(2deg);
+            box-shadow: 0 15px 40px var(--shadow);
+            border-color: var(--light-gold);
+        }
+
+        .fun-emoji {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .fun-card h4 {
+            font-family: 'Chewy', cursive;
+            color: var(--gold);
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .fun-card p {
+            color: var(--light-gold);
+            font-size: 1.1rem;
+            line-height: 1.5;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            margin-top: 60px;
+            border-top: 2px solid var(--gold);
+            animation: slideUp 0.8s ease-out 1.1s backwards;
+        }
+
+        footer p {
+            color: var(--light-gold);
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        .heart {
+            color: var(--pink);
+            animation: heartbeat 1.5s infinite;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            10%, 30% { transform: scale(1.2); }
+            20%, 40% { transform: scale(1); }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+                letter-spacing: 1px;
+            }
+
+            .tagline {
+                font-size: 1.1rem;
+                padding: 0 10px;
+            }
+
+            .logo {
+                width: 120px;
+                height: 120px;
+            }
+
+            header {
+                padding: 40px 10px 30px;
+            }
+
+            .hero-section {
+                padding: 40px 20px;
+                margin: 20px 0;
+            }
+
+            .hero-section h2 {
+                font-size: 1.8rem;
+            }
+
+            .hero-section p {
+                font-size: 1.1rem;
+                padding: 0 10px;
+            }
+
+            .social-section h3,
+            .ca-section h3,
+            .fun-section h3 {
+                font-size: 1.8rem;
+            }
+
+            .social-buttons {
+                gap: 15px;
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .social-btn {
+                padding: 15px 25px;
+                font-size: 1.2rem;
+                width: 100%;
+                justify-content: center;
+            }
+
+            .social-icon {
+                font-size: 1.5rem;
+            }
+
+            .ca-section {
+                padding: 30px 15px;
+                margin: 40px 0;
+            }
+
+            .ca-container {
+                flex-direction: column;
+                padding: 15px;
+                gap: 10px;
+            }
+
+            .ca-text {
+                font-size: 0.85rem;
+                min-width: auto;
+                width: 100%;
+                padding: 5px;
+            }
+
+            .copy-btn {
+                width: 100%;
+                padding: 12px 20px;
+                font-size: 1rem;
+            }
+
+            .fun-section {
+                padding: 30px 20px;
+            }
+
+            .fun-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .fun-card {
+                padding: 25px;
+            }
+
+            .fun-emoji {
+                font-size: 2.5rem;
+            }
+
+            .fun-card h4 {
+                font-size: 1.3rem;
+            }
+
+            .fun-card p {
+                font-size: 1rem;
+            }
+
+            footer {
+                padding: 30px 15px;
+            }
+
+            footer p {
+                font-size: 1rem;
+            }
+
+            .copied-notification {
+                top: 10px;
+                right: 10px;
+                left: 10px;
+                padding: 12px 20px;
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .tagline {
+                font-size: 1rem;
+            }
+
+            .hero-section h2 {
+                font-size: 1.5rem;
+            }
+
+            .hero-section p {
+                font-size: 1rem;
+            }
+
+            .ca-text {
+                font-size: 0.75rem;
+            }
+        }
+
+        /* Floating coins animation */
+        .floating-coin {
+            position: fixed;
+            font-size: 2rem;
+            animation: float 10s infinite;
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0.3;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Stars background -->
+    <div class="stars" id="stars"></div>
+
+    <!-- Floating coins -->
+    <div class="floating-coins" id="floatingCoins"></div>
+
+    <div class="container">
+        <header>
+            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Cdefs%3E%3CradialGradient id='coinGradient' cx='50%25' cy='30%25'%3E%3Cstop offset='0%25' style='stop-color:%23FFE87C'/%3E%3Cstop offset='50%25' style='stop-color:%23FFD700'/%3E%3Cstop offset='100%25' style='stop-color:%23FFA500'/%3E%3C/radialGradient%3E%3C/defs%3E%3Ccircle cx='100' cy='100' r='90' fill='url(%23coinGradient)' stroke='%23CC8800' stroke-width='8'/%3E%3Ccircle cx='100' cy='100' r='75' fill='none' stroke='%23FFE87C' stroke-width='2' opacity='0.5'/%3E%3Ctext x='100' y='115' font-family='Arial' font-size='80' fill='%23CC8800' text-anchor='middle' font-weight='bold'%3E😃%3C/text%3E%3C/svg%3E" alt="Noob Coin Logo" class="logo">
+            <h1>NOOB COIN</h1>
+            <p class="tagline">The Happiest Coin in Crypto! 🚀</p>
+        </header>
+
+        <main>
+            <section class="hero-section">
+                <h2>Welcome to Noob Coin! 🎉</h2>
+                <p>
+                    We're not a serious coin. We're a FUN coin! 
+                    Join the most cheerful community in crypto. 
+                    No promises, no BS, just pure vibes! 🌟
+                </p>
+            </section>
+
+            <section class="social-section">
+                <h3>Join Our Community! 🤝</h3>
+                <div class="social-buttons">
+                    <a href="https://x.com/i/communities/2013632180912824338" target="_blank" rel="noopener" class="social-btn">
+                        <span class="social-icon">𝕏</span>
+                        <span class="social-text">X Community</span>
+                    </a>
+                    <a href="https://t.me/noobcoinn" target="_blank" rel="noopener" class="social-btn">
+                        <span class="social-icon">✈️</span>
+                        <span class="social-text">Telegram</span>
+                    </a>
+                </div>
+            </section>
+
+            <section class="ca-section">
+                <h3>Contract Address 📝</h3>
+                <div class="ca-container">
+                    <div class="ca-text" id="contractAddress">TBA - Coming Soon!</div>
+                    <button class="copy-btn" onclick="copyCA()">
+                        <span>📋 Copy CA</span>
+                    </button>
+                </div>
+                <p style="color: var(--light-gold); margin-top: 15px; font-size: 0.95rem;">
+                    * Contract Address will be announced soon. Stay tuned! 🚀
+                </p>
+            </section>
+
+            <section class="fun-section">
+                <h3>Why Noob Coin? 🤔</h3>
+                <div class="fun-grid">
+                    <div class="fun-card">
+                        <span class="fun-emoji">🎮</span>
+                        <h4>For Noobs, By Noobs</h4>
+                        <p>Everyone was a noob once. We embrace it!</p>
+                    </div>
+                    <div class="fun-card">
+                        <span class="fun-emoji">😄</span>
+                        <h4>Pure Fun</h4>
+                        <p>Crypto too serious? Not here! We're all about good vibes.</p>
+                    </div>
+                    <div class="fun-card">
+                        <span class="fun-emoji">🌈</span>
+                        <h4>Community First</h4>
+                        <p>Join a chill and supportive community!</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>Made with <span class="heart">❤️</span> by the Noob Coin Community</p>
+            <p style="font-size: 0.9rem; opacity: 0.7;">Stay Noob. Stay Happy. 🪙</p>
+        </footer>
+    </div>
+
+    <div class="copied-notification" id="copiedNotification">
+        ✅ Copied to clipboard!
+    </div>
+
+    <script>
+        // Generate stars
+        function createStars() {
+            const starsContainer = document.getElementById('stars');
+            for (let i = 0; i < 100; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                star.style.animationDelay = Math.random() * 3 + 's';
+                starsContainer.appendChild(star);
+            }
+        }
+
+        // Generate floating coins
+        function createFloatingCoins() {
+            const container = document.getElementById('floatingCoins');
+            const coins = ['🪙', '💰', '✨'];
+            
+            setInterval(() => {
+                const coin = document.createElement('div');
+                coin.className = 'floating-coin';
+                coin.textContent = coins[Math.floor(Math.random() * coins.length)];
+                coin.style.left = Math.random() * 100 + '%';
+                coin.style.animationDuration = (Math.random() * 5 + 8) + 's';
+                container.appendChild(coin);
+
+                setTimeout(() => {
+                    coin.remove();
+                }, 13000);
+            }, 3000);
+        }
+
+        // Copy Contract Address
+        function copyCA() {
+            const caText = document.getElementById('contractAddress').textContent;
+            const notification = document.getElementById('copiedNotification');
+            
+            // Copy to clipboard
+            navigator.clipboard.writeText(caText).then(() => {
+                // Show notification
+                notification.classList.add('show');
+                
+                // Hide notification after 2 seconds
+                setTimeout(() => {
+                    notification.classList.remove('show');
+                }, 2000);
+            }).catch(err => {
+                console.error('Failed to copy:', err);
+            });
+        }
+
+        // Initialize
+        createStars();
+        createFloatingCoins();
+
+        // Easter egg: click counter
+        let clickCount = 0;
+        document.querySelector('.logo').addEventListener('click', function() {
+            clickCount++;
+            if (clickCount === 10) {
+                alert('🎉 Congrats! You found the secret! You are a TRUE NOOB! 🎉');
+                clickCount = 0;
+            }
+        });
+    </script>
+</body>
+</html>
